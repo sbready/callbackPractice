@@ -88,8 +88,12 @@ contains(names, 'Colt', function(result){
 // 5. Write a function called uniq that takes the names array and removes all duplicates.
 // Invoke the callback with the modified array as an argument.
 
-  //Code Here
-
+  function uniq(names, cb) {
+    var unique = names.filter(function(element, index, names) {
+      return index == names.indexOf(element);
+    })
+    cb(unique);
+  }
 
 
 uniq(names, function(uniqArr){
@@ -99,7 +103,11 @@ uniq(names, function(uniqArr){
 
 // 6. Write a function called each that takes in an array of names. For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 
-    //Code Here
+    function each(names, cb) {
+      for (var i = 0; i < names.length; i++) {
+        cb(names[i], i)
+      }
+    }
 
 
 
@@ -112,7 +120,13 @@ each(names, function(item, indice){
 // 7. Write a function called getUserById that looks at the array of user objects (users) and searches for a user by ID.
 // When the correct user object is found, invoke the callback with the user object as an argument.
 
-// Code here
+  function getUserById(users, id, cb) {
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].id === id) {
+        cb(users[i]);
+      }
+    }
+  }
 
 
 
